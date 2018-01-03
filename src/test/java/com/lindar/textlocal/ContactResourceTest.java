@@ -7,7 +7,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class ContactResourceTest {
 
-
     private final String API_KEY = System.getenv("TEXTLOCAL_APIKEY");
     private final ContactResource contactResource = new ContactResource(API_KEY);
 
