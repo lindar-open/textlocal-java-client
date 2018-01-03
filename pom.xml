@@ -78,5 +78,18 @@
         </plugins>
     </build>
 
+    <distributionManagement>
+        <repository>
+            <id>central</id>
+            <name>debian-releases</name>
+            <url>http://192.168.1.178/artifactory/libs-release</url>
+        </repository>
+        <snapshotRepository>
+            <id>snapshots</id>
+            <name>debian-snapshots</name>
+            <url>http://192.168.1.178/artifactory/libs-snapshot</url>
+        </snapshotRepository>
+    </distributionManagement>
+
 
 </project>
