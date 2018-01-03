@@ -13,11 +13,10 @@ pipeline {
     }
     stage('Deliver') {
       steps {
-        sh 'mvn deploy'
         script {
           configFileProvider(
             [configFile(fileId: 'ac6238ce-1db5-4705-85ad-19089a2e2b36', variable: 'MAVEN_SETTINGS')]) {
-              sh 'mvn -s $MAVEN_SETTINGS clean package'
+              sh 'mvn -s $MAVEN_SETTINGS deploy'
             }
           }
           
