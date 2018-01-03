@@ -12,10 +12,13 @@ public class ContactResource extends BaseResource {
     private static final String GROUP_NAME_FIELD = "name";
     private static final String GROUP_ID_FIELD = "group_id";
     private static final String CONTACTS_FIELD = "contacts";
+    private static final String NUMBERS_FIELD = "numbers";
+
     private static final String NUMBER_FIELD = "number";
 
 
     private static final int MAX_BULK_CONTACTS = 1500;
+    private static final int MAX_CONTACTS = 15000;
 
     ContactResource(String apiKey) {
         super(apiKey);
@@ -48,6 +51,20 @@ public class ContactResource extends BaseResource {
         params.put(CONTACTS_FIELD, new Gson().toJson(contacts));
 
         return newPostRequest(Endpoints.Contacts.CREATE_CONTACTS_BULK, params)
+                .fromJson()
+                .castTo(TextlocalBulkCreateContactsResponse.class);
+    }
+
+    public TextlocalBulkCreateContactsResponse createContacts(List<String> numbers, long groupId){
+
+        if(numbers == null || numbers.isEmpty()) throw new IllegalArgumentException("Numbers must not be empty");
+        if(numbers.size() > MAX_CONTACTS) throw new IllegalArgumentException("You can only create up to " + MAX_CONTACTS + " contacts at a time");
+
+        Map<String, String> params = new HashMap<>();
+        params.put(GROUP_ID_FIELD, String.valueOf(groupId));
+        params.put(NUMBERS_FIELD, String.join(",", numbers));
+
+        return newPostRequest(Endpoints.Contacts.CREATE_CONTACTS, params)
                 .fromJson()
                 .castTo(TextlocalBulkCreateContactsResponse.class);
     }
