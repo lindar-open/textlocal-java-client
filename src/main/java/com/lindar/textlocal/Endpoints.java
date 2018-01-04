@@ -11,4 +11,9 @@ interface Endpoints {
         String CREATE_CONTACTS = BASE + "/create_contacts";
         String DELETE_CONTACT = BASE + "/delete_contact";
     }
+
+    interface Reporting {
+        String GROUP_MESSAGE_HISTORY = BASE + "/get_history_group";
+        String BATCH_STATUS = BASE + "/status_batch";
+    }
 }

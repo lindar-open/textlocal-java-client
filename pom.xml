@@ -4,7 +4,7 @@
 
     <groupId>com.lindar</groupId>
     <artifactId>textlocal-client</artifactId>
-    <version>0.1.0</version>
+    <version>0.2.0</version>
     <name>Textlocal Java Client</name>
     <description>A java clinet for Textlocal</description>
     <url>http://www.lindar.com/</url>
@@ -33,7 +33,7 @@
         <dependency>
             <groupId>com.lindar</groupId>
             <artifactId>well-rested-client</artifactId>
-            <version>1.3.0</version>
+            <version>1.4.0</version>
         </dependency>
         <dependency>
             <groupId>org.junit.jupiter</groupId>

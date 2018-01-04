@@ -16,15 +16,17 @@ class BaseResource {
         this.apiKey = apiKey;
     }
 
-
-
-
     protected WellRestedResponse newPostRequest(String endpoint) {
         return newPostRequest(endpoint, null);
     }
 
     protected WellRestedResponse newPostRequest(String endpoint, Map<String, String> params){
-        return WellRestedRequest.builder().url(endpoint).build().post().formParams(buildParams(params)).submit();
+        return WellRestedRequest.builder()
+                .url(endpoint)
+                .build()
+                .post()
+                .formParams(buildParams(params))
+                .submit();
     }
 
     private Map<String, String> buildParams(Map<String, String> params){
